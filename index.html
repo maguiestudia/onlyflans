@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only Flans</title>
+    <link rel="icon" type="image/png" href="favicon.png"> <!-- Favicon -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #DB5AB9;
+        }
+        body {
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            cursor: url('flan.png'), auto; /* Usar la imagen como cursor */
+        }
+        .navbar {
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            max-width: 1140px; /* Ajusta este valor según el tamaño del contenedor de Bootstrap */
+        }
+        .navbar-brand img {
+            height: 25px;
+            width: auto; /* Mantiene la proporción de la imagen */
+        }
+        .footer-text {
+            background-color: var(--primary-color);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 56px; /* Ajusta este valor según la altura de la barra de navegación */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            margin-top: auto; /* Empuja el footer al final de la página */
+        }
+        .photo-wall img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px;
+        }
+        .photo-wall img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .banner-img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px; /* Añadir margen entre el banner y las fotos */
+        }
+        @media (max-width: 768px) {
+            .banner-img {
+                content: url('banner-small.jpg');
+            }
+        }
+        .trail {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.6;
+            transition: transform 0.2s, opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior -->
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Espacio para banner -->
+    <div class="container-fluid p-0">
+        <img src="banner.jpg" alt="Banner" class="img-fluid w-100 banner-img">
+    </div>
+
+    <!-- Paredón de fotos -->
+    <div class="container mt-3">
+        <div class="row photo-wall">
+            <div class="col-12 col-md-4">
+                <img src="foto1.jpg" alt="Foto 1">
+                <img src="foto2.jpg" alt="Foto 2">
+                <img src="foto3.jpg" alt="Foto 3">
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="foto4.jpg" alt="Foto 4">
+                <img src="foto5.jpg" alt="Foto 5">
+                <img src="foto6.jpg" alt="Foto 6">
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="foto7.jpg" alt="Foto 7">
+                <img src="foto8.jpg" alt="Foto 8">
+                <img src="foto9.jpg" alt="Foto 9">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-text">
+        <p>Gracias por su visita. Con amor, @nabadigital ♥</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            var trail = document.createElement('img');
+            trail.src = 'flan.png';
+            trail.className = 'trail';
+            trail.style.left = e.pageX + 'px';
+            trail.style.top = e.pageY + 'px';
+            trail.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(trail);
+            setTimeout(function() {
+                trail.style.opacity = '0';
+                setTimeout(function() {
+                    trail.remove();
+                }, 500);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
